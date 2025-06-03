@@ -1,0 +1,5 @@
+@import "tailwindcss";
+@plugin "daisyui";
+.active {
+    @apply bg-info text-info-content;
+}
