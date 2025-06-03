@@ -12,11 +12,13 @@ import AuthProvidor from "./AuthProvidor.jsx";
 import PrivateRoute from "./PrivateRoute.jsx";
 import MyReviews from "./MyReviews.jsx";
 import AddService from "./AddService.jsx";
+import Error from "./Error.jsx";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <App />,
+    errorElement: <Error />,
     children: [
       {
         path: "/",
