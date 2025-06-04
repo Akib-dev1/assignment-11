@@ -1,4 +1,4 @@
-import { StrictMode } from "react";
+import { StrictMode, Suspense } from "react";
 import { createRoot } from "react-dom/client";
 import "./index.css";
 import App from "./App.jsx";
@@ -13,6 +13,10 @@ import PrivateRoute from "./PrivateRoute.jsx";
 import MyReviews from "./MyReviews.jsx";
 import AddService from "./AddService.jsx";
 import Error from "./Error.jsx";
+import ServiceDetails from "./ServiceDetails.jsx";
+
+const limitedServices=fetch("http://localhost:3000/services/limited")
+  .then((response) => response.json())
 
 const router = createBrowserRouter([
   {
@@ -23,7 +27,7 @@ const router = createBrowserRouter([
       {
         path: "/",
         index: true,
-        element: <Home />,
+        element: <Suspense fallback={<div className="flex justify-center items-center h-screen"><span className="loading loading-bars loading-xl mx-auto"></span></div>}><Home limitedServices={limitedServices} /></Suspense>,
       },
       {
         path: "services",
@@ -40,6 +44,11 @@ const router = createBrowserRouter([
       {
         path: "myreviews",
         element: <PrivateRoute><MyReviews /></PrivateRoute>
+      },
+      {
+        path: "servicedetails/:id",
+        element: <ServiceDetails />,
+        loader: ({ params }) => fetch(`http://localhost:3000/services/${params.id}`),
       },
       {
         path: "addservice",

@@ -1,19 +1,21 @@
 import React from "react";
 import { use } from "react";
 import { AuthContext } from "./AuthProvidor";
+import axios from "axios";
+import Swal from "sweetalert2";
 
 const AddService = () => {
-  const {user}=use(AuthContext);
+  const { user } = use(AuthContext);
   const handelSubmit = (event) => {
     event.preventDefault();
-    const serviceImage=event.target.serviceImage.value;
-    const serviceTitle=event.target.serviceTitle.value;
-    const companyName=event.target.companyName.value;
-    const companyWebsite=event.target.companyWebsite.value;
-    const serviceDescription=event.target.serviceDescription.value;
-    const serviceCategory=event.target.serviceCategory.value;
-    const servicePrice=event.target.servicePrice.value;
-    const today = new Date().toISOString().split('T')[0];
+    const serviceImage = event.target.serviceImage.value;
+    const serviceTitle = event.target.serviceTitle.value;
+    const companyName = event.target.companyName.value;
+    const companyWebsite = event.target.companyWebsite.value;
+    const serviceDescription = event.target.serviceDescription.value;
+    const serviceCategory = event.target.serviceCategory.value;
+    const servicePrice = event.target.servicePrice.value;
+    const today = new Date().toISOString().split("T")[0];
     const serviceData = {
       serviceImage,
       serviceTitle,
@@ -23,9 +25,27 @@ const AddService = () => {
       serviceCategory,
       servicePrice,
       addedDate: today,
-      userEmail: user?.email
+      userEmail: user?.email,
     };
-    console.log(serviceData);
+    axios
+      .post("http://localhost:3000/services", serviceData)
+      .then((response) => {
+        if (response.data.insertedId) {
+          Swal.fire({
+            title: "Service Added Successfully!",
+            icon: "success",
+            draggable: true,
+          });
+          event.target.reset();
+        }
+      })
+      .catch((error) => {
+        Swal.fire({
+          icon: "error",
+          title: `Oops...${error.response.status}`,
+          text: "Failed to add service. Please try again.",
+        });
+      });
   };
   return (
     <div className="w-11/12 mx-auto py-10 min-h-screen">
@@ -107,10 +127,10 @@ const AddService = () => {
                   <option value="1" disabled>
                     Select Category
                   </option>
-                  <option value="web-development">Web Development</option>
-                  <option value="graphic-design">Graphic Design</option>
-                  <option value="digital-marketing">Digital Marketing</option>
-                  <option value="content-writing">Content Writing</option>
+                  <option value="Web-Development">Web Development</option>
+                  <option value="Graphic-Design">Graphic Design</option>
+                  <option value="Digital-Marketing">Digital Marketing</option>
+                  <option value="Content-Writing">Content Writing</option>
                 </select>
                 <label className="label">Service Price</label>
                 <input

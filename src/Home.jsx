@@ -1,12 +1,14 @@
-import React from "react";
+import React, { use } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
 import { Autoplay, Pagination, Navigation } from "swiper/modules";
-const Home = () => {
+import ServiceCard from "./ServiceCard";
+const Home = ({ limitedServices }) => {
+  const services=use(limitedServices);
   return (
-    <div>
+    <div className="w-11/12 mx-auto">
       <Swiper
         spaceBetween={30}
         centeredSlides={true}
@@ -70,6 +72,14 @@ const Home = () => {
           </div>
         </SwiperSlide>
       </Swiper>
+      <h1 className="text-4xl font-bold text-center my-10 text-[#257459]">
+        Our Services
+      </h1>
+      <div className="grid grid-cols-2 my-10 max-md:grid-cols-1 gap-5">
+        {
+          services.map(service=><ServiceCard key={service._id} service={service} />)
+        }
+      </div>
     </div>
   );
 };
