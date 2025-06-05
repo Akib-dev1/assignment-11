@@ -8,9 +8,9 @@ const MyReviewCard = ({ review }) => {
   const initialReview = review;
   const [reviews, setReviews] = useState(initialReview);
 
-  useEffect(()=>{
+  useEffect(() => {
     setReviews(review);
-  },[review])
+  }, [review]);
 
   const [service, setService] = useState({});
   useEffect(() => {
@@ -23,7 +23,7 @@ const MyReviewCard = ({ review }) => {
 
   const [rating, setRating] = useState(0);
 
-  const handleSubmit = (e,id) => {
+  const handleSubmit = (e, id) => {
     e.preventDefault();
     const reviewText = e.target.review.value;
     const ratingStar = rating;
@@ -58,20 +58,18 @@ const MyReviewCard = ({ review }) => {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        axios
-          .delete(`http://localhost:3000/reviews/${id}`)
-          .then((res) => {
-            if (res.data.deletedCount) {
-              Swal.fire({
-                title: "Deleted!",
-                text: "Your review has been deleted.",
-                icon: "success",
-              });
-            }
-          });
+        axios.delete(`http://localhost:3000/reviews/${id}`).then((res) => {
+          if (res.data.deletedCount) {
+            Swal.fire({
+              title: "Deleted!",
+              text: "Your review has been deleted.",
+              icon: "success",
+            });
+          }
+        });
       }
     });
-  }
+  };
 
   const navigation = useNavigation();
   if (navigation.state === "loading") {
@@ -83,78 +81,88 @@ const MyReviewCard = ({ review }) => {
   }
   return (
     <div>
-      <div className="card bg-info card-lg shadow-sm">
-        <div className="card-body">
-          <div className="flex items-center gap-4">
-            <div className="avatar">
-              <div className="w-16 rounded">
-                <img
-                  src={reviews.userImage}
-                  alt="Tailwind-CSS-Avatar-component"
-                />
+      {service && (
+        <div className="card bg-info card-lg shadow-sm">
+          <div className="card-body">
+            <div className="flex items-center gap-4">
+              <div className="avatar">
+                <div className="w-16 rounded">
+                  <img
+                    src={reviews.userImage}
+                    alt="Tailwind-CSS-Avatar-component"
+                  />
+                </div>
               </div>
+              <h2 className="card-title">{reviews.userName}</h2>
             </div>
-            <h2 className="card-title">{reviews.userName}</h2>
-          </div>
-          <Rating
-            style={{ maxWidth: 180 }}
-            value={reviews.ratingStar}
-            readOnly
-          />
-          <p>{reviews.reviewText}</p>
-          <div className="justify-end card-actions">
+            <Rating
+              style={{ maxWidth: 180 }}
+              value={reviews.ratingStar}
+              readOnly
+            />
+            <p>{reviews.reviewText}</p>
+            <div className="justify-end card-actions">
+              <p className="font-semibold">
+                Review Added Date: {reviews.reviewDate}
+              </p>
+              <button
+                className="btn btn-error"
+                onClick={() => handleDelete(reviews._id)}
+              >
+                Delete
+              </button>
+              <button
+                className="btn btn-warning"
+                onClick={() => {
+                  document.getElementById("my_modal_3").showModal();
+                }}
+              >
+                Update
+              </button>
+              <dialog id="my_modal_3" className="modal">
+                <div className="modal-box text-warning bg-[#257459]">
+                  <form method="dialog">
+                    <button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">
+                      ✕
+                    </button>
+                  </form>
+                  <h3 className="font-bold text-lg">Write a Review</h3>
+                  <p className="py-4 text-base">
+                    Write your review about this service here. Your feedback is
+                    valuable!
+                  </p>
+                  <form
+                    method="dialog"
+                    onSubmit={(e) => handleSubmit(e, reviews._id)}
+                  >
+                    <textarea
+                      className="textarea text-black w-full"
+                      placeholder="Review Box"
+                      name="review"
+                      required
+                    ></textarea>
+                    <Rating
+                      className="mt-4"
+                      style={{ maxWidth: 180 }}
+                      value={rating}
+                      onChange={setRating}
+                    />
+                    <input
+                      type="submit"
+                      value="Update Review"
+                      className="btn btn-warning mt-4"
+                    />
+                  </form>
+                </div>
+              </dialog>
+            </div>
+            <hr className="mt-4" />
             <p className="font-semibold">
-              Review Added Date: {reviews.reviewDate}
+              Service Title: {service?.serviceTitle}
             </p>
-            <button className="btn btn-error" onClick={() => handleDelete(reviews._id)}>Delete</button>
-            <button
-              className="btn btn-warning"
-              onClick={() => {
-                document.getElementById("my_modal_3").showModal();
-              }}
-            >
-              Update
-            </button>
-            <dialog id="my_modal_3" className="modal">
-              <div className="modal-box text-warning bg-[#257459]">
-                <form method="dialog">
-                  <button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">
-                    ✕
-                  </button>
-                </form>
-                <h3 className="font-bold text-lg">Write a Review</h3>
-                <p className="py-4 text-base">
-                  Write your review about this service here. Your feedback is
-                  valuable!
-                </p>
-                <form method="dialog" onSubmit={(e) => handleSubmit(e, reviews._id)}>
-                  <textarea
-                    className="textarea text-black w-full"
-                    placeholder="Review Box"
-                    name="review"
-                    required
-                  ></textarea>
-                  <Rating
-                    className="mt-4"
-                    style={{ maxWidth: 180 }}
-                    value={rating}
-                    onChange={setRating}
-                  />
-                  <input
-                    type="submit"
-                    value="Update Review"
-                    className="btn btn-warning mt-4"
-                  />
-                </form>
-              </div>
-            </dialog>
           </div>
-          <hr className="mt-4" />
-          <p className="font-semibold">
-            Service Title: {service?.serviceTitle}
-          </p>
         </div>
-      </div>
+      )}
     </div>
   );
 };

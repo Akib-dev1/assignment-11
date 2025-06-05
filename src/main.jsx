@@ -14,6 +14,8 @@ import MyReviews from "./MyReviews.jsx";
 import AddService from "./AddService.jsx";
 import Error from "./Error.jsx";
 import ServiceDetails from "./ServiceDetails.jsx";
+import MyServices from "./MyServices.jsx";
+import MyserviceUpdate from "./MyserviceUpdate.jsx";
 
 const limitedServices=fetch("http://localhost:3000/services/limited")
   .then((response) => response.json())
@@ -32,6 +34,15 @@ const router = createBrowserRouter([
       {
         path: "services",
         element: <Services />,
+      },
+      {
+        path: "myservices",
+        element: <PrivateRoute><MyServices /></PrivateRoute>,
+      },
+      {
+        path: "myservices/update/:id",
+        loader: ({ params }) => fetch(`http://localhost:3000/services/${params.id}`),
+        element:<PrivateRoute><MyserviceUpdate /></PrivateRoute>
       },
       {
         path: "login",

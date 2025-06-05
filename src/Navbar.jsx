@@ -37,15 +37,18 @@ const Navbar = () => {
                 <NavLink to="/services">Services</NavLink>
               </li>
               {user && (
-              <>
-                <li>
-                  <NavLink to="/addservice">Add Service</NavLink>
-                </li>
-                <li>
-                  <NavLink to="/myreviews">My Reviews</NavLink>
-                </li>
-              </>
-            )}
+                <>
+                  <li>
+                    <NavLink to="/addservice">Add Service</NavLink>
+                  </li>
+                  <li>
+                    <NavLink to="/myservices">My Services</NavLink>
+                  </li>
+                  <li>
+                    <NavLink to="/myreviews">My Reviews</NavLink>
+                  </li>
+                </>
+              )}
             </ul>
           </div>
           <a href="/" className="btn btn-link no-underline text-2xl">
@@ -66,6 +69,9 @@ const Navbar = () => {
               <>
                 <li>
                   <NavLink to="/addservice">Add Service</NavLink>
+                </li>
+                <li>
+                  <NavLink to="/myservices">My Services</NavLink>
                 </li>
                 <li>
                   <NavLink to="/myreviews">My Reviews</NavLink>
