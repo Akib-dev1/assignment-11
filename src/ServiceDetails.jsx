@@ -1,10 +1,11 @@
-import React, { use, useState } from "react";
-import { useLoaderData, useNavigation } from "react-router";
+import React, { use, useEffect, useState } from "react";
+import { Link, useLoaderData, useNavigation } from "react-router";
 import { Rating } from "@smastrom/react-rating";
 import Swal from "sweetalert2";
 import "@smastrom/react-rating/style.css";
 import { AuthContext } from "./AuthProvidor";
 import axios from "axios";
+import ReviewCard from "./ReviewCard";
 
 const ServiceDetails = () => {
   const [rating, setRating] = useState(0);
@@ -12,6 +13,15 @@ const ServiceDetails = () => {
   const serviceData = useLoaderData();
   const navigation = useNavigation();
   const today = new Date().toISOString().split("T")[0];
+  const [reviews, setReviews] = useState([]);
+
+  useEffect(() => {
+    fetch(`http://localhost:3000/reviews/${serviceData._id}`)
+      .then((response) => response.json())
+      .then((data) => {
+        setReviews(data);
+      });
+  }, [serviceData._id,reviews]);
 
   const handleClick = () => {
     if (user) {
@@ -26,13 +36,16 @@ const ServiceDetails = () => {
   };
 
   const handleSubmit = (event) => {
+    event.preventDefault();
     const reviewText = event.target.review.value;
     const ratingStar = rating;
     const reviewFor = serviceData._id;
     const userImage = user?.photoURL;
     const userName = user?.displayName;
+    const userEmail = user?.email;
     const reviewData = {
       reviewText,
+      userEmail,
       ratingStar,
       reviewFor,
       userImage,
@@ -50,6 +63,7 @@ const ServiceDetails = () => {
           });
           event.target.reset();
           setRating(0);
+          document.getElementById("my_modal_3").close();
         }
       })
       .catch((error) => {
@@ -98,7 +112,13 @@ const ServiceDetails = () => {
             Price:{" "}
             <span className="font-normal">{serviceData.servicePrice} $</span>
           </p>
+          <p className="text-base font-medium">
+            Total Reviews: <span className="font-normal">{reviews.length}</span>
+          </p>
           <div className="card-actions justify-end">
+            <Link to="/services" className="btn btn-primary">
+              Back to services
+            </Link>
             <button
               className="btn btn-warning btn-outline"
               onClick={handleClick}
@@ -141,6 +161,18 @@ const ServiceDetails = () => {
           </div>
         </div>
       </div>
+      {(reviews.length > 0) && (
+        <>
+          <h1 className="text-3xl mt-8 font-bold text-center text-[#257459]">
+            Reviews For {serviceData.serviceTitle}
+          </h1>
+          <div className="my-8 w-full gap-5 grid grid-cols-3 max-md:grid-cols-1">
+            {reviews.map((review) => (
+              <ReviewCard key={review._id} review={review} />
+            ))}
+          </div>
+        </>
+      )}
     </div>
   );
 };
