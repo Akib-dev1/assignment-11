@@ -16,7 +16,7 @@ const ServiceDetails = () => {
   const [reviews, setReviews] = useState([]);
 
   useEffect(() => {
-    fetch(`http://localhost:3000/reviews/${serviceData._id}`)
+    fetch(`http://localhost:3000/reviews/for/${serviceData._id}`)
       .then((response) => response.json())
       .then((data) => {
         setReviews(data);

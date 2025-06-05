@@ -23,7 +23,7 @@ const MyReviewCard = ({ review }) => {
 
   const [rating, setRating] = useState(0);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = (e,id) => {
     e.preventDefault();
     const reviewText = e.target.review.value;
     const ratingStar = rating;
@@ -32,7 +32,7 @@ const MyReviewCard = ({ review }) => {
       ratingStar,
     };
     axios
-      .put(`http://localhost:3000/reviews/${reviews._id}`, reviewUpdate)
+      .put(`http://localhost:3000/reviews/${id}`, reviewUpdate)
       .then((res) => {
         if (res.data.modifiedCount) {
           setRating(0);
@@ -47,7 +47,7 @@ const MyReviewCard = ({ review }) => {
       });
   };
 
-  const handleDelete = () => {
+  const handleDelete = (id) => {
     Swal.fire({
       title: "Are you sure?",
       text: "You won't be able to revert this!",
@@ -59,7 +59,7 @@ const MyReviewCard = ({ review }) => {
     }).then((result) => {
       if (result.isConfirmed) {
         axios
-          .delete(`http://localhost:3000/reviews/${reviews._id}`)
+          .delete(`http://localhost:3000/reviews/${id}`)
           .then((res) => {
             if (res.data.deletedCount) {
               Swal.fire({
@@ -106,7 +106,7 @@ const MyReviewCard = ({ review }) => {
             <p className="font-semibold">
               Review Added Date: {reviews.reviewDate}
             </p>
-            <button className="btn btn-error" onClick={handleDelete}>Delete</button>
+            <button className="btn btn-error" onClick={() => handleDelete(reviews._id)}>Delete</button>
             <button
               className="btn btn-warning"
               onClick={() => {
@@ -127,7 +127,7 @@ const MyReviewCard = ({ review }) => {
                   Write your review about this service here. Your feedback is
                   valuable!
                 </p>
-                <form method="dialog" onSubmit={handleSubmit}>
+                <form method="dialog" onSubmit={(e) => handleSubmit(e, reviews._id)}>
                   <textarea
                     className="textarea text-black w-full"
                     placeholder="Review Box"
