@@ -1,12 +1,10 @@
 import axios from "axios";
 import React from "react";
-import { useLoaderData, useNavigate } from "react-router";
 import Swal from "sweetalert2";
 
-const MyserviceUpdate = () => {
-  const data = useLoaderData();
-  const navigate=useNavigate();
-  const handelSubmit = (event,id) => {
+const MyserviceUpdate = ({ service, closeModal }) => {
+  const data = service;
+  const handelSubmit = (event, id) => {
     event.preventDefault();
     const serviceImage = event.target.serviceImage.value;
     const serviceTitle = event.target.serviceTitle.value;
@@ -24,22 +22,21 @@ const MyserviceUpdate = () => {
       serviceCategory,
       servicePrice,
     };
-    axios.put(
-      `http://localhost:3000/services/${id}`,
-      serviceData
-    ).then((res) => {
-      if (res.data.modifiedCount) {
-        navigate("/myservices");
-        Swal.fire({
-          title: "Service Updated Successfully!",
-          icon: "success",
-          draggable: true,
-        });
-      }
-    });
+    axios
+      .put(`http://localhost:3000/services/${id}`, serviceData)
+      .then((res) => {
+        if (res.data.modifiedCount) {
+          closeModal();
+          Swal.fire({
+            title: "Service Updated Successfully!",
+            icon: "success",
+            draggable: true,
+          });
+        }
+      });
   };
   return (
-    <div className="w-11/12 mx-auto min-h-screen my-10">
+    <div className="w-11/12 mx-auto my-10">
       <div className="bg-[#002B36] p-10 rounded-lg shadow-lg">
         <form onSubmit={(event) => handelSubmit(event, data._id)}>
           <div className="collapse collapse-arrow bg-base-100 border border-base-300 mb-4">

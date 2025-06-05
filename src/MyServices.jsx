@@ -3,6 +3,7 @@ import { AuthContext } from "./AuthProvidor";
 import { Link } from "react-router";
 import axios from "axios";
 import Swal from "sweetalert2";
+import TableRow from "./TableRow";
 
 const MyServices = () => {
   const { user } = use(AuthContext);
@@ -15,18 +16,29 @@ const MyServices = () => {
       });
   }, [user?.email, services]);
 
-    const handleDelete = (id) => {
-        axios.delete(`http://localhost:3000/services/${id}`)
-        .then((res) => {
-            if (res.data.deletedCount) {
-                Swal.fire({
-                    title: "Service Deleted Successfully!",
-                    icon: "success",
-                    draggable: true,
-                });
-            }
-        })
-    }
+  const handleDelete = (id) => {
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        axios.delete(`http://localhost:3000/services/${id}`).then((res) => {
+          if (res.data.deletedCount) {
+            Swal.fire({
+              title: "Service Deleted Successfully!",
+              icon: "success",
+              draggable: true,
+            });
+          }
+        });
+      }
+    });
+  };
   return (
     <div className="w-11/12 mx-auto min-h-screen my-10">
       <h1 className="text-3xl font-bold mb-8 text-center text-[#257459]">
@@ -51,21 +63,12 @@ const MyServices = () => {
               </thead>
               <tbody>
                 {services.map((service, index) => (
-                  <tr key={service._id}>
-                    <td className="font-semibold">{index + 1}</td>
-                    <td className="font-semibold">{service.serviceTitle}</td>
-                    <td className="font-semibold">{service.serviceCategory}</td>
-                    <td className="font-semibold">{service.companyName}</td>
-                    <td className="font-semibold"><a href={service.companyWebsite} target="_blank" rel="noopener noreferrer">{service.companyWebsite}</a></td>
-                    <td className="font-semibold">{service.servicePrice} $</td>
-                    <td className="font-semibold">{service.addedDate}</td>
-                    <td>
-                      <Link to={`/myservices/update/${service._id}`} className="btn btn-warning">Update</Link>
-                    </td>
-                    <td>
-                      <button className="btn btn-secondary" onClick={() => handleDelete(service._id)}>Delete</button>
-                    </td>
-                  </tr>
+                  <TableRow
+                    key={service._id}
+                    service={service}
+                    index={index}
+                    handleDelete={handleDelete}
+                  />
                 ))}
               </tbody>
             </table>

@@ -5,6 +5,7 @@ import axios from "axios";
 import Swal from "sweetalert2";
 
 const MyReviewCard = ({ review }) => {
+  const modalId = `modal-${review._id}`;
   const initialReview = review;
   const [reviews, setReviews] = useState(initialReview);
 
@@ -42,7 +43,7 @@ const MyReviewCard = ({ review }) => {
             icon: "success",
             draggable: true,
           });
-          document.getElementById("my_modal_3").close();
+          document.getElementById(modalId).close();
         }
       });
   };
@@ -114,12 +115,12 @@ const MyReviewCard = ({ review }) => {
               <button
                 className="btn btn-warning"
                 onClick={() => {
-                  document.getElementById("my_modal_3").showModal();
+                  document.getElementById(modalId).showModal();
                 }}
               >
                 Update
               </button>
-              <dialog id="my_modal_3" className="modal">
+              <dialog id={modalId} className="modal">
                 <div className="modal-box text-warning bg-[#257459]">
                   <form method="dialog">
                     <button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">

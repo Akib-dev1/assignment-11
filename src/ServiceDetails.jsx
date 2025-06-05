@@ -117,7 +117,7 @@ const ServiceDetails = () => {
           </p>
           <div className="card-actions justify-end">
             <Link to="/services" className="btn btn-primary">
-              Back to services
+              Back to Services
             </Link>
             <button
               className="btn btn-warning btn-outline"
