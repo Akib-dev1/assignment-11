@@ -48,7 +48,7 @@ const Navbar = () => {
             )}
             </ul>
           </div>
-          <a href="#" className="btn btn-link no-underline text-2xl">
+          <a href="/" className="btn btn-link no-underline text-2xl">
             <span className="text-[#005F73] font-bold cursor-pointer">
               Serv<span className="text-[#94D2BD]">View</span>
             </span>

@@ -10,7 +10,7 @@ const Services = () => {
       .then((data) => {
         setServices(data);
       });
-  }, []);
+  }, [services]);
   const navigation = useNavigation();
   if (navigation.state === "loading") {
     return (
