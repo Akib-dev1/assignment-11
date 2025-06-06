@@ -1,5 +1,6 @@
 @import "tailwindcss";
 @plugin "daisyui";
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,100..700;1,100..700&display=swap');
 .active {
     @apply bg-info text-info-content;
 }
@@ -10,4 +11,8 @@ margin: 0;
 }
 .no-spinner {
 -moz-appearance: textfield;
+}
+
+*{
+    font-family: "IBM Plex Sans", sans-serif;
 }
