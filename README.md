@@ -1,12 +1,91 @@
-# React + Vite
+# 🚀 ServiceHub - Service Listing Platform
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Welcome to **ServiceHub**, a full-featured service listing platform built with React, Firebase, Express, and MongoDB. This project offers full CRUD functionality, user authentication, filtering, and a fully dynamic UI with search and review features.
 
-Currently, two official plugins are available:
+🔗 **Live Site**: [assignment-11-akib-dev1.netlify.app](https://assignment-11-akib-dev1.netlify.app)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
 
-## Expanding the ESLint configuration
+## 🧩 Features Overview
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+### 🔐 Authentication
+- Email & Password-based Login/Register
+- Google Login
+- Toast/SweetAlert feedback
+- JWT Authentication with secured API access
+
+### 🧭 Navigation
+- **Navbar** dynamically updates based on login status
+- **Protected Routes**: Add Service, My Services, and My Reviews
+- **Footer**: Consistent branding and helpful links
+
+---
+
+## 🏠 Home Page Sections
+- **Banner**: Image carousel with meaningful captions
+- **Featured Services**: Shows 6 latest services (MongoDB `limit()` used)
+- **Meet Our Partners**: Static partner info section
+- **Extra Sections**: Two custom-designed meaningful sections
+- **Animations**: Smooth motion using Framer Motion
+
+---
+
+## 📄 Pages & Routes
+
+### 🔍 All Services Page
+- Lists all available services
+- **Search** functionality by title, category, or company name
+- **Filter** by service category via dropdown
+
+### 🧾 Service Details Page
+- Detailed info with user reviews
+- Add review (text + rating) if logged in
+
+### ➕ Add Service Page
+- Authenticated users can add a service
+- Automatically stores date and user email
+
+### 🛠️ My Services Page
+- Shows services created by the logged-in user
+- Update & delete functionality using modals
+
+### 💬 My Reviews Page
+- Shows user's reviews
+- Edit and delete options
+- Service title is read-only during updates
+
+---
+
+## 🧠 Additional Features
+- 🔄 Dynamic Page Titles (based on routes)
+- 🧭 404 Not Found Page
+- ⏳ Loading Spinner on data fetch
+- 🔔 Toast/SweetAlert for all actions
+- 📈 CountUp animations for Users, Reviews, and Services
+
+---
+
+## 📦 Tech Stack
+
+| Technology     | Description                          |
+|----------------|--------------------------------------|
+| React          | Frontend UI framework                |
+| React Router   | Route-based navigation               |
+| Firebase       | Authentication                       |
+| Express.js     | Backend server/API                   |
+| MongoDB        | NoSQL database                       |
+| Tailwind CSS   | Modern utility-first CSS             |
+| Axios          | API requests                         |
+| React CountUp  | Counter animation                    |
+| Lottie React   | Animations                           |
+| React Toastify & SweetAlert | Notifications           |
+| JWT            | Token-based route protection         |
+
+---
+
+## 🛡️ Security
+- JWT stored in cookies
+- Secured `POST`, `PATCH`, and `DELETE` routes
+- Unauthorized users get proper access error
+
+---

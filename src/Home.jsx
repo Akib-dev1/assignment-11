@@ -12,6 +12,7 @@ const Home = ({ limitedServices, partners }) => {
   const partnersData = use(partners);
   return (
     <div className="w-11/12 mx-auto">
+      <title>ServView - Home</title>
       <Swiper
         spaceBetween={30}
         centeredSlides={true}

@@ -85,6 +85,7 @@ const ServiceDetails = () => {
   }
   return (
     <div className="w-11/12 mx-auto py-10 min-h-screen">
+      <title>ServView - Service Details</title>
       <div className="card bg-[#257459] text-white w-full">
         <div className="card-body">
           <h2 className="card-title">

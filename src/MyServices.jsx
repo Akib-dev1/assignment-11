@@ -1,12 +1,13 @@
 import React, { use, useEffect, useState } from "react";
 import { AuthContext } from "./AuthProvidor";
-import { Link } from "react-router";
+import { Link, useNavigation } from "react-router";
 import axios from "axios";
 import Swal from "sweetalert2";
 import TableRow from "./TableRow";
 
 const MyServices = () => {
   const { user } = use(AuthContext);
+  const navigation = useNavigation();
   const [services, setServices] = useState([]);
   useEffect(() => {
     fetch(`https://b11a11-server-side-akib-dev1.vercel.app/services/userEmail/${user?.email}`)
@@ -46,8 +47,16 @@ const MyServices = () => {
       }
     });
   };
+  if (navigation.state === "loading") {
+    return (
+      <div className="flex justify-center items-center h-screen">
+        <span className="loading loading-bars loading-xl mx-auto"></span>
+      </div>
+    );
+  }
   return (
     <div className="w-11/12 mx-auto min-h-screen my-10">
+      <title>ServView - My Services</title>
       <h1 className="text-3xl font-bold mb-8 text-center text-[#257459]">
         My Services
       </h1>

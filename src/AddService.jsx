@@ -49,6 +49,7 @@ const AddService = () => {
   };
   return (
     <div className="w-11/12 mx-auto py-10 min-h-screen">
+      <title>ServView - Add Service</title>
       <h1 className="text-4xl font-bold text-center mb-10 text-[#257459]">
         Add Your Services Here
       </h1>

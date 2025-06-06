@@ -50,6 +50,7 @@ const Services = () => {
   }
   return (
     <div className="w-11/12 mx-auto py-10 min-h-screen">
+      <title>SerView - All Services</title>
       <div className="flex justify-center mb-4">
         <label className="input">
           <svg
