@@ -1,0 +1,42 @@
+[
+  {
+    "name": "TechNova Solutions",
+    "logo": "https://i.ibb.co/tTRsQ2Rf/image.png",
+    "description": "Provided backend development and deployment support for the platform, ensuring smooth API integration and server uptime."
+  },
+  {
+    "name": "PixelCraft Studio",
+    "logo": "https://i.ibb.co/4RnT0hT0/image.png",
+    "description": "Designed the UI/UX layout and created custom graphics, contributing to a visually appealing and user-friendly interface."
+  },
+  {
+    "name": "ContentSpark",
+    "logo": "https://i.ibb.co/hJTMnrsH/image.png",
+    "description": "Wrote SEO-optimized content for the service categories and static pages, helping improve search engine visibility."
+  },
+  {
+    "name": "GrowHive Marketing",
+    "logo": "https://i.ibb.co/RpbDgMq0/image.png",
+    "description": "Managed the digital marketing campaigns during launch, including social media promotion and email marketing."
+  },
+  {
+    "name": "SecureSys Labs",
+    "logo": "https://i.ibb.co/4gCjKD2D/image.png",
+    "description": "Audited our platform's security, implemented data protection strategies, and ensured compliance with industry standards."
+  },
+  {
+    "name": "CloudWave Hosting",
+    "logo": "https://i.ibb.co/6cXVbWTn/image.png",
+    "description": "Provided reliable cloud infrastructure and CDN services to ensure high performance and uptime for our users globally."
+  },
+  {
+    "name": "FormEase Tools",
+    "logo": "https://i.ibb.co/gZRv3hNc/image.png",
+    "description": "Integrated form handling and validation tools that improved user experience across all interactive sections of the app."
+  },
+  {
+    "name": "DataViz Studio",
+    "logo": "https://i.ibb.co/1fzW8j4L/image.png",
+    "description": "Helped build dashboards and charts for user feedback analytics, offering clear insights into platform performance."
+  }
+]

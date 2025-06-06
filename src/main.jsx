@@ -15,10 +15,11 @@ import AddService from "./AddService.jsx";
 import Error from "./Error.jsx";
 import ServiceDetails from "./ServiceDetails.jsx";
 import MyServices from "./MyServices.jsx";
-// import MyserviceUpdate from "./MyserviceUpdate.jsx";
 
 const limitedServices=fetch("http://localhost:3000/services/limited")
   .then((response) => response.json())
+
+const partners=fetch("/partners.json").then((response) => response.json())
 
 const router = createBrowserRouter([
   {
@@ -29,7 +30,7 @@ const router = createBrowserRouter([
       {
         path: "/",
         index: true,
-        element: <Suspense fallback={<div className="flex justify-center items-center h-screen"><span className="loading loading-bars loading-xl mx-auto"></span></div>}><Home limitedServices={limitedServices} /></Suspense>,
+        element: <Suspense fallback={<div className="flex justify-center items-center h-screen"><span className="loading loading-bars loading-xl mx-auto"></span></div>}><Home limitedServices={limitedServices} partners={partners} /></Suspense>,
       },
       {
         path: "services",
@@ -39,11 +40,6 @@ const router = createBrowserRouter([
         path: "myservices",
         element: <PrivateRoute><MyServices /></PrivateRoute>,
       },
-      // {
-      //   path: "myservices/update/:id",
-      //   loader: ({ params }) => fetch(`http://localhost:3000/services/${params.id}`),
-      //   element:<PrivateRoute><MyserviceUpdate /></PrivateRoute>
-      // },
       {
         path: "login",
         element: <Login />,
