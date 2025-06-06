@@ -87,6 +87,8 @@ const MyReviewCard = ({ review }) => {
     });
   };
 
+
+
   const navigation = useNavigation();
   if (navigation.state === "loading") {
     return (
@@ -97,7 +99,7 @@ const MyReviewCard = ({ review }) => {
   }
   return (
     <div>
-      {service && (
+      {service.serviceTitle && (
         <div className="card bg-info card-lg shadow-sm">
           <div className="card-body">
             <div className="flex items-center gap-4">
