@@ -15,7 +15,7 @@ const MyReviewCard = ({ review }) => {
 
   const [service, setService] = useState({});
   useEffect(() => {
-    fetch(`http://localhost:3000/services/${reviews.reviewFor}`)
+    fetch(`https://b11a11-server-side-akib-dev1.vercel.app/services/${reviews.reviewFor}`)
       .then((res) => res.json())
       .then((data) => {
         setService(data);
@@ -33,7 +33,7 @@ const MyReviewCard = ({ review }) => {
       ratingStar,
     };
     axios
-      .put(`http://localhost:3000/reviews/${id}`, reviewUpdate,{ withCredentials: true })
+      .put(`https://b11a11-server-side-akib-dev1.vercel.app/reviews/${id}`, reviewUpdate,{ withCredentials: true })
       .then((res) => {
         if (res.data.modifiedCount) {
           setRating(0);
@@ -67,7 +67,7 @@ const MyReviewCard = ({ review }) => {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        axios.delete(`http://localhost:3000/reviews/${id}`, { withCredentials: true }).then((res) => {
+        axios.delete(`https://b11a11-server-side-akib-dev1.vercel.app/reviews/${id}`, { withCredentials: true }).then((res) => {
           if (res.data.deletedCount) {
             Swal.fire({
               title: "Deleted!",

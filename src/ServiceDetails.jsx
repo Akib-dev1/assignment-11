@@ -16,7 +16,7 @@ const ServiceDetails = () => {
   const [reviews, setReviews] = useState([]);
 
   useEffect(() => {
-    fetch(`http://localhost:3000/reviews/for/${serviceData._id}`)
+    fetch(`https://b11a11-server-side-akib-dev1.vercel.app/reviews/for/${serviceData._id}`)
       .then((response) => response.json())
       .then((data) => {
         setReviews(data);
@@ -53,7 +53,7 @@ const ServiceDetails = () => {
       reviewDate: today,
     };
     axios
-      .post("http://localhost:3000/reviews", reviewData, { withCredentials: true })
+      .post("https://b11a11-server-side-akib-dev1.vercel.app/reviews", reviewData, { withCredentials: true })
       .then((res) => {
         if (res.data.insertedId) {
           Swal.fire({

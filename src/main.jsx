@@ -16,7 +16,7 @@ import Error from "./Error.jsx";
 import ServiceDetails from "./ServiceDetails.jsx";
 import MyServices from "./MyServices.jsx";
 
-const limitedServices=fetch("http://localhost:3000/services/limited")
+const limitedServices=fetch("https://b11a11-server-side-akib-dev1.vercel.app/services/limited")
   .then((response) => response.json())
 
 const partners=fetch("/partners.json").then((response) => response.json())
@@ -55,7 +55,7 @@ const router = createBrowserRouter([
       {
         path: "servicedetails/:id",
         element: <ServiceDetails />,
-        loader: ({ params }) => fetch(`http://localhost:3000/services/${params.id}`),
+        loader: ({ params }) => fetch(`https://b11a11-server-side-akib-dev1.vercel.app/services/${params.id}`),
       },
       {
         path: "addservice",

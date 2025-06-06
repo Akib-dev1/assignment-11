@@ -26,14 +26,14 @@ const Services = () => {
   const handleCategoryChange = (e) => {
     const selectedCategory = e.target.value;
     console.log(selectedCategory);
-    fetch(`http://localhost:3000/services/category/${selectedCategory}`)
+    fetch(`https://b11a11-server-side-akib-dev1.vercel.app/services/category/${selectedCategory}`)
       .then((response) => response.json())
       .then((data) => {
         setFilteredServices(data);
       });
   };
   useEffect(() => {
-    fetch("http://localhost:3000/services")
+    fetch("https://b11a11-server-side-akib-dev1.vercel.app/services")
       .then((response) => response.json())
       .then((data) => {
         setServices(data);

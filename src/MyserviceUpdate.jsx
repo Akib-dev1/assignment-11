@@ -23,7 +23,7 @@ const MyserviceUpdate = ({ service, closeModal }) => {
       servicePrice,
     };
     axios
-      .put(`http://localhost:3000/services/${id}`, serviceData, { withCredentials: true })
+      .put(`https://b11a11-server-side-akib-dev1.vercel.app/services/${id}`, serviceData, { withCredentials: true })
       .then((res) => {
         if (res.data.modifiedCount) {
           closeModal();

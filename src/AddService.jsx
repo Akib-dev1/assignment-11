@@ -28,7 +28,7 @@ const AddService = () => {
       userEmail: user?.email,
     };
     axios
-      .post("http://localhost:3000/services", serviceData, { withCredentials: true })
+      .post("https://b11a11-server-side-akib-dev1.vercel.app/services", serviceData, { withCredentials: true })
       .then((response) => {
         if (response.data.insertedId) {
           Swal.fire({

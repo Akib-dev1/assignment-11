@@ -9,7 +9,7 @@ const MyServices = () => {
   const { user } = use(AuthContext);
   const [services, setServices] = useState([]);
   useEffect(() => {
-    fetch(`http://localhost:3000/services/userEmail/${user?.email}`)
+    fetch(`https://b11a11-server-side-akib-dev1.vercel.app/services/userEmail/${user?.email}`)
       .then((res) => res.json())
       .then((data) => {
         setServices(data);
@@ -27,7 +27,7 @@ const MyServices = () => {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        axios.delete(`http://localhost:3000/services/${id}`, { withCredentials: true }).then((res) => {
+        axios.delete(`https://b11a11-server-side-akib-dev1.vercel.app/services/${id}`, { withCredentials: true }).then((res) => {
           if (res.data.deletedCount) {
             Swal.fire({
               title: "Service Deleted Successfully!",

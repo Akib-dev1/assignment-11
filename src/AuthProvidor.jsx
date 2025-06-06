@@ -33,7 +33,7 @@ const AuthProvidor = ({children}) => {
             setLoading(false);
             setUser(currentUser);
             if(currentUser?.email){
-                axios.post('http://localhost:3000/jwt',{email: currentUser.email},{withCredentials: true}).then(res => {
+                axios.post('https://b11a11-server-side-akib-dev1.vercel.app/jwt',{email: currentUser.email},{withCredentials: true}).then(res => {
                     toast.success("JWT token generated successfully");
                 }).catch(err => {
                     console.error("JWT Error:", err);
