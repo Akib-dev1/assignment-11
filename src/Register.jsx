@@ -2,10 +2,19 @@ import React, { use } from "react";
 import { Link, useLocation, useNavigate } from "react-router";
 import { AuthContext } from "./AuthProvidor";
 import { toast } from "react-toastify";
+import Lottie from "lottie-react";
+import loginAnimation from "./assets/login.json";
 
 const Register = () => {
-  const { updateUser, setError, error, setUser, emailRegister, authorizeWithGoogle } = use(AuthContext);
-  const {state} = useLocation();
+  const {
+    updateUser,
+    setError,
+    error,
+    setUser,
+    emailRegister,
+    authorizeWithGoogle,
+  } = use(AuthContext);
+  const { state } = useLocation();
   const navigate = useNavigate();
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -18,7 +27,7 @@ const Register = () => {
         updateUser({ displayName: name, photoURL: URL })
           .then(() => {
             setUser({ ...result.user, displayName: name, photoURL: URL });
-            navigate(state?state:"/");
+            navigate(state ? state : "/");
             setError("");
             toast("Registration Successful");
           })
@@ -28,37 +37,57 @@ const Register = () => {
           });
       })
       .catch((e) => {
-        if (e.code === 'auth/email-already-in-use') {
-          setError('Email address is already in use. Please use a different email or try logging in.');
-        } else if (e.code === 'auth/invalid-email') {
-          setError('Invalid email address format.');
-        } else if (e.code === 'auth/weak-password') {
-          setError('Password is too weak. It should be at least 6 characters.');
-        } else if (e.code === 'auth/operation-not-allowed') {
-          setError('Email/password accounts are not enabled. Please contact support.');
-      } else if (e.code === 'auth/missing-password') {
-          setError('Password is required.');
+        if (e.code === "auth/email-already-in-use") {
+          setError(
+            "Email address is already in use. Please use a different email or try logging in."
+          );
+        } else if (e.code === "auth/invalid-email") {
+          setError("Invalid email address format.");
+        } else if (e.code === "auth/weak-password") {
+          setError("Password is too weak. It should be at least 6 characters.");
+        } else if (e.code === "auth/operation-not-allowed") {
+          setError(
+            "Email/password accounts are not enabled. Please contact support."
+          );
+        } else if (e.code === "auth/missing-password") {
+          setError("Password is required.");
         } else {
-          setError(e.message || 'An unexpected error occurred. Please try again.');
+          setError(
+            e.message || "An unexpected error occurred. Please try again."
+          );
         }
       });
   };
   const handleGoogle = () => {
-    authorizeWithGoogle().then((result)=>{
-      setUser(result.user);
-      navigate("/");
-      setError("");
-      toast("Registration Successful");
-    }).catch((error)=>{
-      setError(error.code);
-      toast(error.code);
-    });
-  }
+    authorizeWithGoogle()
+      .then((result) => {
+        setUser(result.user);
+        navigate("/");
+        setError("");
+        toast("Registration Successful");
+      })
+      .catch((error) => {
+        setError(error.code);
+        toast(error.code);
+      });
+  };
 
   return (
     <div>
       <title>ServView - Register</title>
-      <div className="flex justify-center items-center min-h-screen">
+
+      <div className="flex justify-center max-md:flex-col md:gap-20 items-center min-h-screen">
+        <div className="my-20 flex flex-col items-center gap-4">
+          <h1 className="text-5xl font-bold text-center">Register now!</h1>
+          <p className="text-center">
+            Join us to share your experiences and discover trusted services.
+          </p>
+          <Lottie
+            animationData={loginAnimation}
+            loop={true}
+            className="md:w-96 md:h-96 h-64"
+          />
+        </div>
         <fieldset className="fieldset bg-base-200 border-base-300 rounded-box w-xs border p-4">
           <legend className="fieldset-legend text-base">Register Form</legend>
 
@@ -144,7 +173,10 @@ const Register = () => {
               className="btn btn-neutral mt-4"
             />
           </form>
-          <button className="btn mt-2 bg-white text-black border-[#e5e5e5]" onClick={handleGoogle}>
+          <button
+            className="btn mt-2 bg-white text-black border-[#e5e5e5]"
+            onClick={handleGoogle}
+          >
             <svg
               aria-label="Google logo"
               width="16"

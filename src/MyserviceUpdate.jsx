@@ -23,7 +23,7 @@ const MyserviceUpdate = ({ service, closeModal }) => {
       servicePrice,
     };
     axios
-      .put(`http://localhost:3000/services/${id}`, serviceData)
+      .put(`http://localhost:3000/services/${id}`, serviceData, { withCredentials: true })
       .then((res) => {
         if (res.data.modifiedCount) {
           closeModal();
@@ -33,6 +33,14 @@ const MyserviceUpdate = ({ service, closeModal }) => {
             draggable: true,
           });
         }
+      })
+      .catch((error) => {
+        closeModal();
+        Swal.fire({
+          icon: "error",
+          title: `Oops...${error.response.status}`,
+          text: "Failed to update service. Please try again.",
+        });
       });
   };
   return (

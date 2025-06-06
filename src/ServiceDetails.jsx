@@ -53,7 +53,7 @@ const ServiceDetails = () => {
       reviewDate: today,
     };
     axios
-      .post("http://localhost:3000/reviews", reviewData)
+      .post("http://localhost:3000/reviews", reviewData, { withCredentials: true })
       .then((res) => {
         if (res.data.insertedId) {
           Swal.fire({
@@ -67,6 +67,7 @@ const ServiceDetails = () => {
         }
       })
       .catch((error) => {
+        document.getElementById("my_modal_3").close();
         Swal.fire({
           title: "Error Adding Review. Error Code: " + error.response.status,
           icon: "error",

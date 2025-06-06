@@ -27,7 +27,7 @@ const MyServices = () => {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        axios.delete(`http://localhost:3000/services/${id}`).then((res) => {
+        axios.delete(`http://localhost:3000/services/${id}`, { withCredentials: true }).then((res) => {
           if (res.data.deletedCount) {
             Swal.fire({
               title: "Service Deleted Successfully!",
@@ -35,6 +35,13 @@ const MyServices = () => {
               draggable: true,
             });
           }
+        })
+        .catch((error) => {
+          Swal.fire({
+            icon: "error",
+            title: `Oops...${error.response.status}`,
+            text: "Failed to delete service. Please try again.",
+          });
         });
       }
     });

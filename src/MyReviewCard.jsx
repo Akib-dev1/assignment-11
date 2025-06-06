@@ -33,7 +33,7 @@ const MyReviewCard = ({ review }) => {
       ratingStar,
     };
     axios
-      .put(`http://localhost:3000/reviews/${id}`, reviewUpdate)
+      .put(`http://localhost:3000/reviews/${id}`, reviewUpdate,{ withCredentials: true })
       .then((res) => {
         if (res.data.modifiedCount) {
           setRating(0);
@@ -45,6 +45,14 @@ const MyReviewCard = ({ review }) => {
           });
           document.getElementById(modalId).close();
         }
+      })
+      .catch((error) => {
+        document.getElementById(modalId).close();
+        Swal.fire({
+          icon: "error",
+          title: "Error",
+          text: "Failed to update review. Please try again.",
+        });
       });
   };
 
@@ -59,7 +67,7 @@ const MyReviewCard = ({ review }) => {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        axios.delete(`http://localhost:3000/reviews/${id}`).then((res) => {
+        axios.delete(`http://localhost:3000/reviews/${id}`, { withCredentials: true }).then((res) => {
           if (res.data.deletedCount) {
             Swal.fire({
               title: "Deleted!",
@@ -67,6 +75,13 @@ const MyReviewCard = ({ review }) => {
               icon: "success",
             });
           }
+        })
+        .catch((error) => {
+          Swal.fire({
+            icon: "error",
+            title: "Error",
+            text: "Failed to delete review. Please try again.",
+          });
         });
       }
     });

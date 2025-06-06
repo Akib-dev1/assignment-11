@@ -14,6 +14,7 @@ const Footer = () => {
               one place.
             </span>
           </p>
+          <p>Copyright © 2025 - All right reserved by ServView Ltd</p>
         </aside>
         <nav>
           <h6 className="footer-title">Social</h6>

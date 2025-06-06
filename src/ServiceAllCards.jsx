@@ -11,6 +11,12 @@ const ServiceAllCards = ({ service }) => {
         <div className="card-body items-center text-center">
           <h2 className="card-title">{service.serviceTitle}</h2>
           <p>{service.serviceDescription}</p>
+          <p className="text-xl font-bold text-[#257459]">
+            Price: ${service.servicePrice}
+          </p>
+          <p className="text-sm text-gray-600">
+            Category: {service.serviceCategory}
+          </p>
           <div className="card-actions">
             <Link
               to={`/servicedetails/${service._id}`}

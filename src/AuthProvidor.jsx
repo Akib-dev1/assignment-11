@@ -2,6 +2,7 @@ import React, { createContext, useEffect, useState } from 'react';
 import { auth } from './firebase.config';
 import { createUserWithEmailAndPassword, GoogleAuthProvider, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut, updateProfile } from 'firebase/auth';
 import { toast } from 'react-toastify';
+import axios from 'axios';
 export const AuthContext =createContext();
 const AuthProvidor = ({children}) => {
     const providor = new GoogleAuthProvider();
@@ -31,6 +32,14 @@ const AuthProvidor = ({children}) => {
         const unsubscribe = onAuthStateChanged(auth,(currentUser)=>{
             setLoading(false);
             setUser(currentUser);
+            if(currentUser?.email){
+                axios.post('http://localhost:3000/jwt',{email: currentUser.email},{withCredentials: true}).then(res => {
+                    toast.success("JWT token generated successfully");
+                }).catch(err => {
+                    console.error("JWT Error:", err);
+                    toast.error("Failed to generate JWT token");
+                });
+            }
         });
         return () => unsubscribe();
     },[]);

@@ -28,7 +28,7 @@ const AddService = () => {
       userEmail: user?.email,
     };
     axios
-      .post("http://localhost:3000/services", serviceData)
+      .post("http://localhost:3000/services", serviceData, { withCredentials: true })
       .then((response) => {
         if (response.data.insertedId) {
           Swal.fire({

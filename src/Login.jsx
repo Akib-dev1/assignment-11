@@ -2,6 +2,8 @@ import React, { use } from "react";
 import { Link, useLocation, useNavigate } from "react-router";
 import { AuthContext } from "./AuthProvidor";
 import { toast } from "react-toastify";
+import Lottie from 'lottie-react';
+import loginAnimation from './assets/login.json';
 
 const Login = () => {
   const {emailLogin, setError, setUser, error, authorizeWithGoogle } = use(AuthContext);
@@ -51,13 +53,18 @@ const Login = () => {
     <div>
       <title>ServView - Login</title>
       <div className="hero bg-base-200 min-h-screen">
-        <div className="hero-content flex-col lg:flex-row-reverse">
+        <div className="hero-content flex-col lg:gap-20 lg:flex-row-reverse">
           <div className="text-center lg:text-left">
             <h1 className="text-5xl font-bold">Login now!</h1>
             <p className="py-6">
               Log in to add services and share your experiences. Browse honest
               reviews and keep track of what you’ve posted.
             </p>
+            <Lottie
+              animationData={loginAnimation}
+              loop={true}
+              className="md:w-96 md:h-96 h-64"
+            />
           </div>
           <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl">
             <div className="card-body">

@@ -17,7 +17,7 @@ const ServiceCard = ({ service }) => {
             <span className="font-semibold">{service.servicePrice}$</span>
           </p>
           <Link to={`/servicedetails/${service._id}`} className="btn btn-info">
-            View Details
+            See Details
           </Link>
         </div>
         <figure>
