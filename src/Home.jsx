@@ -190,7 +190,10 @@ const Home = ({ limitedServices, partners }) => {
             <div className="card-body">
               <h2 className="card-title">Trusted by Thousands</h2>
               <p className="text-justify">
-                We’ve earned the trust of thousands of happy customers through consistent, high-quality service. Our strong track record speaks for itself — whether you're a new user or a returning client, you can count on us to deliver every time.
+                We’ve earned the trust of thousands of happy customers through
+                consistent, high-quality service. Our strong track record speaks
+                for itself — whether you're a new user or a returning client,
+                you can count on us to deliver every time.
               </p>
             </div>
           </div>
@@ -198,7 +201,10 @@ const Home = ({ limitedServices, partners }) => {
             <div className="card-body">
               <h2 className="card-title">Affordable Pricing</h2>
               <p className="text-justify">
-                We believe great service shouldn't break the bank. That’s why we offer competitive pricing that gives you the best value without compromising on quality. Whether you're on a tight budget or looking for premium options, we’ve got something for everyone.
+                We believe great service shouldn't break the bank. That’s why we
+                offer competitive pricing that gives you the best value without
+                compromising on quality. Whether you're on a tight budget or
+                looking for premium options, we’ve got something for everyone.
               </p>
             </div>
           </div>
@@ -206,8 +212,46 @@ const Home = ({ limitedServices, partners }) => {
             <div className="card-body">
               <h2 className="card-title">Fast & On-Time</h2>
               <p className="text-justify">
-                We understand the importance of deadlines, which is why punctuality is at the heart of what we do. Our team is committed to delivering your service quickly and efficiently — always on time, without sacrificing quality.
+                We understand the importance of deadlines, which is why
+                punctuality is at the heart of what we do. Our team is committed
+                to delivering your service quickly and efficiently — always on
+                time, without sacrificing quality.
               </p>
+            </div>
+          </div>
+        </div>
+        <div className="">
+          <h1 className="text-3xl font-bold text-center text-[#257459] mb-8">
+            FAQ
+          </h1>
+          <div className="collapse collapse-arrow bg-base-100 border border-base-300">
+            <input type="radio" name="my-accordion-2" defaultChecked />
+            <div className="collapse-title font-semibold">
+              How do I create an account?
+            </div>
+            <div className="collapse-content text-sm">
+              Click the "Register" button in the top right corner and follow the
+              registration process.
+            </div>
+          </div>
+          <div className="collapse collapse-arrow bg-base-100 border border-base-300">
+            <input type="radio" name="my-accordion-2" />
+            <div className="collapse-title font-semibold">
+              How do I see my services?
+            </div>
+            <div className="collapse-content text-sm">
+              Click on "My Services" in your account dashboard to view all your
+              active services.
+            </div>
+          </div>
+          <div className="collapse collapse-arrow bg-base-100 border border-base-300">
+            <input type="radio" name="my-accordion-2" />
+            <div className="collapse-title font-semibold">
+              How do I update my reviews?
+            </div>
+            <div className="collapse-content text-sm">
+              Go to ""My Reviews" in your account dashboard, select the review
+              you want to update, and click "Edit". Make your changes and save.
             </div>
           </div>
         </div>
