@@ -7,7 +7,9 @@ const MyReviews = () => {
   const { user } = use(AuthContext);
   const [reviews, setReviews] = useState([]);
   useEffect(() => {
-    fetch(`https://b11a11-server-side-akib-dev1.vercel.app/reviews/forUser/${user?.email}`)
+    fetch(
+      `https://b11a11-server-side-akib-dev1.vercel.app/reviews/forUser/${user?.email}`
+    )
       .then((res) => res.json())
       .then((data) => {
         setReviews(data);
@@ -27,11 +29,17 @@ const MyReviews = () => {
       <h1 className="text-3xl font-bold text-center mb-8 text-[#257459]">
         My Reviews
       </h1>
-      <div className="grid grid-cols-1 gap-6">
-        {reviews.map((review) => (
-          <MyReviewCard key={review._id} review={review} />
-        ))}
-      </div>
+      {reviews.length > 0 ? (
+        <div className="grid grid-cols-1 gap-6">
+          {reviews.map((review) => (
+            <MyReviewCard key={review._id} review={review} />
+          ))}
+        </div>
+      ) : (
+        <h1 className="text-3xl font-bold text-center text-[#257459]">
+          No Reviews Found
+        </h1>
+      )}
     </div>
   );
 };
