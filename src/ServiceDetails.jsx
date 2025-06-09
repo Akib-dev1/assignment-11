@@ -24,6 +24,17 @@ const ServiceDetails = () => {
   }, [serviceData._id,reviews]);
 
   const handleClick = () => {
+    const reviewSameUser = reviews.find(
+      (review) => review.userEmail === user?.email
+    );
+    if (reviewSameUser) {
+      Swal.fire({
+        icon: "warning",
+        title: "Review Already Exists",
+        text: "You have already reviewed this service.",
+      });
+      return;
+    }
     if (user) {
       document.getElementById("my_modal_3").showModal();
     } else {
