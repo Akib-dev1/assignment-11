@@ -4,7 +4,7 @@ import { Link } from "react-router";
 const ServiceAllCards = ({ service }) => {
   return (
     <div>
-      <div className="card bg-[#94D2BD] w-full shadow-sm">
+      <div className="card bg-[#94D2BD] h-full w-full shadow-sm">
         <figure className="px-10 pt-10">
           <img src={service.serviceImage} alt="Shoes" className="rounded-xl" />
         </figure>
