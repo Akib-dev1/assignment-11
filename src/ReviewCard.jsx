@@ -4,7 +4,7 @@ import { Rating } from "@smastrom/react-rating";
 const ReviewCard = ({ review }) => {
   return (
     <div>
-      <div className="card max-w-96 bg-info card-lg shadow-sm">
+      <div className="card max-w-96 h-full bg-info card-lg shadow-sm">
         <div className="card-body">
           <div className="flex items-center gap-4">
             <div className="avatar">
