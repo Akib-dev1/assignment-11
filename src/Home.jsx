@@ -1,4 +1,4 @@
-import React, { use } from "react";
+import React, { use, useEffect, useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/pagination";
@@ -10,6 +10,28 @@ import CountUp from "react-countup";
 const Home = ({ limitedServices, partners }) => {
   const services = use(limitedServices);
   const partnersData = use(partners);
+  const [reviewsCount, setReviewsCount] = useState(0);
+  const [usersCount, setUsersCount] = useState(0);
+  const [servicesCount, setServicesCount] = useState(0);
+  useEffect(()=>{
+    fetch("https://b11a11-server-side-akib-dev1.vercel.app/services")
+      .then((res) => res.json())
+      .then((data) => {
+        setServicesCount(data.length);
+      });
+
+    fetch("https://b11a11-server-side-akib-dev1.vercel.app/users")
+      .then((res) => res.json())
+      .then((data) => {
+        setUsersCount(data.length);
+      });
+
+    fetch("https://b11a11-server-side-akib-dev1.vercel.app/reviews")
+      .then((res) => res.json())
+      .then((data) => {
+        setReviewsCount(data.length);
+      })
+  },[servicesCount, usersCount, reviewsCount]);
   return (
     <div className="w-11/12 mx-auto">
       <title>ServView - Home</title>
@@ -143,9 +165,8 @@ const Home = ({ limitedServices, partners }) => {
               </div>
               <div className="stat-title">Total Page Reviews</div>
               <div className="stat-value text-primary">
-                <CountUp end={25600} duration={3} />
+                <CountUp end={reviewsCount} duration={3} />
               </div>
-              <div className="stat-desc">21% more than last month</div>
             </div>
 
             <div className="stat bg-base-300">
@@ -164,21 +185,17 @@ const Home = ({ limitedServices, partners }) => {
                   ></path>
                 </svg>
               </div>
-              <div className="stat-title">Page Views</div>
+              <div className="stat-title">Total Users</div>
               <div className="stat-value text-secondary">
-                <CountUp end={2600000} duration={3} />
+                <CountUp end={usersCount} duration={3} />
               </div>
-              <div className="stat-desc">21% more than last month</div>
             </div>
 
             <div className="stat bg-base-300">
               <div className="stat-value">
-                <CountUp end={86} duration={3} />%
+                <CountUp end={servicesCount} duration={3} />
               </div>
-              <div className="stat-title">Services done</div>
-              <div className="stat-desc text-secondary">
-                31 services remaining
-              </div>
+              <div className="stat-title">Total Services</div>
             </div>
           </div>
         </div>

@@ -4,6 +4,7 @@ import { AuthContext } from "./AuthProvidor";
 import { toast } from "react-toastify";
 import Lottie from 'lottie-react';
 import loginAnimation from './assets/login.json';
+import axios from "axios";
 
 const Login = () => {
   const {emailLogin, setError, setUser, error, authorizeWithGoogle } = use(AuthContext);
@@ -41,6 +42,7 @@ const Login = () => {
   const handleGoogle = () => {
       authorizeWithGoogle().then((result)=>{
         setUser(result.user);
+        axios.post('https://b11a11-server-side-akib-dev1.vercel.app/users',{email:result.user.email,name:result.user.displayName});
         navigate(state?state:"/");
         setError("");
         toast("Login Successful");
