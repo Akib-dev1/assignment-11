@@ -148,7 +148,7 @@ const MyReviewCard = ({ review }) => {
                 Update
               </button>
               <dialog id={modalId} className="modal">
-              <div className="modal-box text-[#242B3A] bg-[#FDFDFD]">
+                <div className="modal-box text-[#242B3A] bg-[#FDFDFD]">
                   <form method="dialog">
                     <button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">
                       ✕
@@ -186,7 +186,8 @@ const MyReviewCard = ({ review }) => {
             </div>
             <hr className="mt-4" />
             <p className="font-semibold">
-              Service Title: <span className="font-normal">{service?.serviceTitle}</span>
+              Service Title:{" "}
+              <span className="font-normal">{service?.serviceTitle}</span>
             </p>
           </div>
         </div>

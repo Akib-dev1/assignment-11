@@ -4,15 +4,12 @@ import { Rating } from "@smastrom/react-rating";
 const ReviewCard = ({ review }) => {
   return (
     <div>
-      <div className="card max-w-96 h-full bg-info card-lg shadow-sm">
+      <div className="card max-w-96 h-full bg-[#FFFFFF] card-lg shadow-lg text-[#242A37]">
         <div className="card-body">
           <div className="flex items-center gap-4">
             <div className="avatar">
               <div className="w-16 rounded">
-                <img
-                  src={review.userImage}
-                  alt="Tailwind-CSS-Avatar-component"
-                />
+                <img src={review.userImage} alt="User Image" />
               </div>
             </div>
             <h2 className="card-title">{review.userName}</h2>

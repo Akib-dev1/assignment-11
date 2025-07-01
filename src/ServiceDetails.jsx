@@ -97,49 +97,49 @@ const ServiceDetails = () => {
   return (
     <div className="w-11/12 mx-auto py-10 min-h-screen">
       <title>ServView - Service Details</title>
-      <div className="card bg-[#257459] text-white w-full">
+      <div className="card bg-[#FFFFFF] text-[#242B3A] shadow-lg w-full">
         <div className="card-body">
           <h2 className="card-title">
             Service Title:{" "}
             <span className="font-normal">{serviceData.serviceTitle}</span>
           </h2>
-          <p className="text-base font-medium">
+          <p className="text-base text-[#242B3A] font-bold">
             Description:{" "}
             <span className="font-normal">
               {serviceData.serviceDescription}
             </span>
           </p>
-          <p className="text-base font-medium">
+          <p className="text-base text-[#242B3A] font-bold">
             Company Name:{" "}
             <span className="font-normal">{serviceData.companyName}</span>
           </p>
-          <p className="text-base font-medium">
+          <p className="text-base text-[#242B3A] font-bold">
             Company Website:{" "}
             <span className="font-normal">{serviceData.companyWebsite}</span>
           </p>
-          <p className="text-base font-medium">
+          <p className="text-base text-[#242B3A] font-bold">
             Category:{" "}
             <span className="font-normal">{serviceData.serviceCategory}</span>
           </p>
-          <p className="text-base font-medium">
+          <p className="text-base text-[#242B3A] font-bold">
             Price:{" "}
             <span className="font-normal">{serviceData.servicePrice} $</span>
           </p>
-          <p className="text-base font-medium">
+          <p className="text-base text-[#242B3A] font-bold">
             Total Reviews: <span className="font-normal">{reviews.length}</span>
           </p>
           <div className="card-actions justify-end">
-            <Link to="/services" className="btn btn-primary">
+            <Link to="/services" className="btn bg-[#EBECED] text-[#242B3A] border-0 hover:bg-[#FF008A] hover:text-white">
               Back to Services
             </Link>
             <button
-              className="btn btn-warning btn-outline"
+              className="btn btn-ghost bg-[#FF008A] text-white border-0 hover:bg-[#EBECED] hover:text-[#242B3A]"
               onClick={handleClick}
             >
               Add Review
             </button>
             <dialog id="my_modal_3" className="modal">
-              <div className="modal-box text-warning bg-[#257459]">
+              <div className="modal-box text-[#242B3A] bg-[#FDFDFD]">
                 <form method="dialog">
                   <button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">
                     ✕
@@ -166,7 +166,7 @@ const ServiceDetails = () => {
                   <input
                     type="submit"
                     value="Add Review"
-                    className="btn btn-warning mt-4"
+                    className="btn bg-[#FF008A] text-white rounded-lg mt-4"
                   />
                 </form>
               </div>
@@ -176,7 +176,7 @@ const ServiceDetails = () => {
       </div>
       {(reviews.length > 0) && (
         <>
-          <h1 className="text-3xl mt-8 font-bold text-center text-[#257459]">
+          <h1 className="text-3xl mt-8 font-bold text-center text-[#242B3A]">
             Reviews For {serviceData.serviceTitle}
           </h1>
           <div className="my-8 w-full gap-5 grid grid-cols-3 max-md:grid-cols-1">

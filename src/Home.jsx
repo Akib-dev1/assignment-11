@@ -3,14 +3,17 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
-import { Autoplay, Pagination, Navigation } from "swiper/modules";
+import "swiper/css/grid";
+import { Autoplay, Grid, Pagination, Navigation } from "swiper/modules";
 import ServiceCard from "./ServiceCard";
 import { motion } from "motion/react";
 import CountUp from "react-countup";
+import ReviewCard from "./ReviewCard";
 const Home = ({ limitedServices, partners }) => {
   const services = use(limitedServices);
   const partnersData = use(partners);
   const [reviewsCount, setReviewsCount] = useState(0);
+  const [reviews, setReviews] = useState([]);
   const [usersCount, setUsersCount] = useState(0);
   const [servicesCount, setServicesCount] = useState(0);
   useEffect(() => {
@@ -30,6 +33,7 @@ const Home = ({ limitedServices, partners }) => {
       .then((res) => res.json())
       .then((data) => {
         setReviewsCount(data.length);
+        setReviews(data);
       });
   }, [servicesCount, usersCount, reviewsCount]);
   return (
@@ -70,7 +74,9 @@ const Home = ({ limitedServices, partners }) => {
             <div className="hero-overlay"></div>
             <div className="hero-content md:justify-self-start text-neutral-content md:p-32">
               <div className="max-w-3xl">
-                <h1 className="mb-5 text-xl md:text-5xl font-bold max-md:text-center">Your Voice Matters</h1>
+                <h1 className="mb-5 text-xl md:text-5xl font-bold max-md:text-center">
+                  Your Voice Matters
+                </h1>
                 <p className="mb-5 max-md:text-center">
                   Share your experience and help others find the services they
                   deserve.
@@ -261,6 +267,16 @@ const Home = ({ limitedServices, partners }) => {
               Go to ""My Reviews" in your account dashboard, select the review
               you want to update, and click "Edit". Make your changes and save.
             </div>
+          </div>
+        </div>
+        <div className="my-10">
+          <h1 className="text-3xl font-bold text-center text-[#242B3A] mb-8">
+            Recent Reviews
+          </h1>
+          <div className="grid grid-cols-3 max-xl:grid-cols-2 gap-8 my-10 max-md:grid-cols-1">
+            {[...reviews].reverse().slice(0, 6).map((review) => (
+              <ReviewCard key={review._id} review={review} />
+            ))}
           </div>
         </div>
       </div>
