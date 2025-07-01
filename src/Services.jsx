@@ -40,7 +40,6 @@ const Services = () => {
   };
   const handleCategoryChange = (e) => {
     const selectedCategory = e.target.value;
-    console.log(selectedCategory);
     fetch(
       `https://b11a11-server-side-akib-dev1.vercel.app/services/category/${selectedCategory}`
     )
