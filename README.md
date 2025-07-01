@@ -1,6 +1,6 @@
-# 🚀 ServiceHub - Service Listing Platform
+# 🚀 ServView - Service Listing Platform
 
-Welcome to **ServiceHub**, a full-featured service listing platform built with React, Firebase, Express, and MongoDB. This project offers full CRUD functionality, user authentication, filtering, and a fully dynamic UI with search and review features.
+Welcome to **ServView**, a full-featured service listing platform built with React, Firebase, Express, and MongoDB. This project offers full CRUD functionality, user authentication, filtering, and a fully dynamic UI with search and review features.
 
 🔗 **Live Site**: [assignment-11-akib-dev1.netlify.app](https://assignment-11-akib-dev1.netlify.app)
 
