@@ -5,8 +5,8 @@ import { AuthContext } from "./AuthProvidor";
 const Navbar = () => {
   const { user, logout } = use(AuthContext);
   return (
-    <div>
-      <div className="navbar bg-[#002B36] shadow-sm">
+    <div className="bg-[#FFFFFF] shadow-lg">
+      <div className="navbar w-11/12 md:w-9/12 mx-auto">
         <div className="navbar-start">
           <div className="dropdown">
             <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -28,37 +28,80 @@ const Navbar = () => {
             </div>
             <ul
               tabIndex={0}
-              className="menu menu-sm dropdown-content bg-[#002B36] rounded-box z-1 mt-3 w-52 p-2 shadow text-[#94D2BD] text-lg"
+              className="menu menu-sm dropdown-content bg-[#FFFFFF] rounded-box z-1 mt-3 w-52 p-2 text-[#28283C] shadow-xl"
             >
               <li>
-                <NavLink to="/">Home</NavLink>
+                <NavLink to="/" className="text-base font-semibold">
+                  Home
+                </NavLink>
               </li>
               <li>
-                <NavLink to="/services">Services</NavLink>
+                <NavLink to="/services" className="text-base font-semibold">
+                  Services
+                </NavLink>
               </li>
+              {!user && (
+                <>
+                  <li>
+                    <Link
+                      to="/login"
+                      className="btn mb-2 bg-inherit hover:bg-[#FF008A] btn-outline text-base hover:text-white"
+                    >
+                      Log In
+                    </Link>
+                  </li>
+                  <li>
+                    <Link
+                      to="/register"
+                      className="btn bg-[#FF008A] text-base text-white"
+                    >
+                      Register
+                    </Link>
+                  </li>
+                </>
+              )}
+
               {user && (
                 <>
                   <li>
-                    <NavLink to="/addservice">Add Service</NavLink>
+                    <NavLink
+                      to="/addservice"
+                      className="text-base font-semibold"
+                    >
+                      Add Service
+                    </NavLink>
                   </li>
                   <li>
-                    <NavLink to="/myservices">My Services</NavLink>
+                    <NavLink
+                      to="/myservices"
+                      className="text-base font-semibold"
+                    >
+                      My Services
+                    </NavLink>
                   </li>
                   <li>
-                    <NavLink to="/myreviews">My Reviews</NavLink>
+                    <NavLink
+                      to="/myreviews"
+                      className="text-base font-semibold"
+                    >
+                      My Reviews
+                    </NavLink>
                   </li>
                 </>
               )}
             </ul>
           </div>
-          <a href="/" className="btn btn-link no-underline text-2xl">
-            <span className="text-[#005F73] font-bold cursor-pointer">
-              Serv<span className="text-[#94D2BD]">View</span>
+          <a
+            href="/"
+            className="btn btn-ghost no-underline text-3xl font-extrabold"
+          >
+            <span className="text-[#FF008A] font-extrabold cursor-pointer">
+              Serv<span className="text-[#28283C] ml-1">View</span>
             </span>
           </a>
         </div>
         <div className="navbar-center hidden lg:flex">
-          <ul className="menu text-base menu-horizontal px-1 text-[#94D2BD]">
+          <ul className="menu menu-horizontal px-1 text-[#28283C] font-semibold text-xl">
             <li>
               <NavLink to="/">Home</NavLink>
             </li>
@@ -98,7 +141,7 @@ const Navbar = () => {
               >
                 <li>
                   <button
-                    className="btn btn-success text-black mt-1"
+                    className="btn bg-[#FF008A] text-white mt-1"
                     onClick={logout}
                   >
                     Logout
@@ -107,11 +150,14 @@ const Navbar = () => {
               </ul>
             </div>
           ) : (
-            <div className="flex gap-2.5">
-              <Link to="/login" className="btn btn-outline btn-success">
+            <div className="flex max-sm:hidden gap-2.5">
+              <Link
+                to="/login"
+                className="btn bg-inherit hover:bg-[#FF008A] btn-outline hover:text-white"
+              >
                 Log In
               </Link>
-              <Link to="/register" className="btn btn-success">
+              <Link to="/register" className="btn bg-[#FF008A] text-white">
                 Register
               </Link>
             </div>

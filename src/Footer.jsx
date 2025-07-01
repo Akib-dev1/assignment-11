@@ -3,22 +3,22 @@ import React from "react";
 const Footer = () => {
   return (
     <div>
-      <footer className="footer sm:footer-horizontal bg-neutral text-neutral-content p-10">
+      <footer className="footer sm:footer-horizontal bg-[#F6F7F7] p-10">
         <aside>
-          <p className="font-semibold text-lg">
+          <p className="font-semibold text-[#28283C] text-lg">
             ServView Ltd.
             <br />
-            <span className="text-base font-normal">
+            <span className="text-base font-normal text-[#656B76]">
               ServView helps you discover trusted services through real user
               reviews. Make informed choices with honest ratings and feedback in
               one place.
             </span>
           </p>
-          <p>Copyright © 2025 - All right reserved by ServView Ltd</p>
+          <p className="text-[#656B76]">Copyright © 2025 - All right reserved by ServView Ltd</p>
         </aside>
         <nav>
-          <h6 className="footer-title">Social</h6>
-          <div className="grid grid-flow-col gap-4">
+          <h6 className="footer-title opacity-100 text-[#28283C]">Social</h6>
+          <div className="grid grid-flow-col gap-4 text-[#656B76]">
             <a href="https://x.com/AnjumAkib" target="_blank">
               <svg
                 xmlns="http://www.w3.org/2000/svg"

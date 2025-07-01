@@ -28,7 +28,11 @@ const AddService = () => {
       userEmail: user?.email,
     };
     axios
-      .post("https://b11a11-server-side-akib-dev1.vercel.app/services", serviceData, { withCredentials: true })
+      .post(
+        "https://b11a11-server-side-akib-dev1.vercel.app/services",
+        serviceData,
+        { withCredentials: true }
+      )
       .then((response) => {
         if (response.data.insertedId) {
           Swal.fire({
@@ -48,14 +52,18 @@ const AddService = () => {
       });
   };
   return (
-    <div className="w-11/12 mx-auto py-10 min-h-screen">
+    <div className="w-11/12 md:w-9/12 mx-auto py-10 min-h-screen">
       <title>ServView - Add Service</title>
-      <h1 className="text-4xl font-bold text-center mb-10 text-[#257459]">
+      <h1 className="text-4xl font-bold text-center mb-4 text-[#28283C]">
         Add Your Services Here
       </h1>
-      <div className="bg-[#002B36] p-10 rounded-lg shadow-lg">
+      <p className="text-[#656B76] text-center mb-6 text-sm sm:text-base">
+        Share the service you offer or need. Provide a clear title and
+        description so others can find and review it easily.
+      </p>
+      <div className="bg-[#FFFFFF] p-10 rounded-lg shadow-lg">
         <form onSubmit={handelSubmit}>
-          <div className="collapse collapse-arrow bg-base-100 border border-base-300 mb-4">
+          <div className="collapse collapse-arrow shadow-md bg-base-300 border border-base-300 mb-4">
             <input type="radio" name="my-accordion-2" defaultChecked />
             <div className="collapse-title font-semibold">Service Details</div>
             <div className="collapse-content text-sm">
@@ -80,7 +88,7 @@ const AddService = () => {
               </fieldset>
             </div>
           </div>
-          <div className="collapse collapse-arrow bg-base-100 border border-base-300 mb-4">
+          <div className="collapse collapse-arrow bg-base-300 border border-base-300 shadow-md mb-4">
             <input type="radio" name="my-accordion-2" />
             <div className="collapse-title font-semibold">Company Details</div>
             <div className="collapse-content text-sm">
@@ -105,7 +113,7 @@ const AddService = () => {
               </fieldset>
             </div>
           </div>
-          <div className="collapse collapse-arrow bg-base-100 border border-base-300 mb-4">
+          <div className="collapse collapse-arrow bg-base-300 border border-base-300 shadow-md mb-4">
             <input type="radio" name="my-accordion-2" />
             <div className="collapse-title font-semibold">Service Info</div>
             <div className="collapse-content text-sm">
@@ -148,7 +156,7 @@ const AddService = () => {
             <input
               type="submit"
               value="Add Service"
-              className="btn btn-success mt-4"
+              className="btn bg-[#EBECED] text-[#28283C] hover:bg-[#FF008A] hover:text-white transition duration-300 mt-4"
             />
           </div>
         </form>

@@ -55,9 +55,9 @@ const MyServices = () => {
     );
   }
   return (
-    <div className="w-11/12 mx-auto min-h-screen my-10">
+    <div className="w-11/12 md:w-9/12 mx-auto min-h-screen my-10">
       <title>ServView - My Services</title>
-      <h1 className="text-3xl font-bold mb-8 text-center text-[#257459]">
+      <h1 className="text-3xl font-bold mb-8 text-center text-[#242B3A]">
         My Services
       </h1>
       {services.length > 0 ? (
@@ -91,7 +91,7 @@ const MyServices = () => {
           </div>
         </>
       ) : (
-        <h1 className="text-3xl font-bold text-center text-[#257459]">
+        <h1 className="text-3xl font-bold text-center text-[#242B3A]">
           No Services Found
         </h1>
       )}

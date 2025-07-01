@@ -15,7 +15,9 @@ const MyReviewCard = ({ review }) => {
 
   const [service, setService] = useState({});
   useEffect(() => {
-    fetch(`https://b11a11-server-side-akib-dev1.vercel.app/services/${reviews.reviewFor}`)
+    fetch(
+      `https://b11a11-server-side-akib-dev1.vercel.app/services/${reviews.reviewFor}`
+    )
       .then((res) => res.json())
       .then((data) => {
         setService(data);
@@ -33,7 +35,11 @@ const MyReviewCard = ({ review }) => {
       ratingStar,
     };
     axios
-      .put(`https://b11a11-server-side-akib-dev1.vercel.app/reviews/${id}`, reviewUpdate,{ withCredentials: true })
+      .put(
+        `https://b11a11-server-side-akib-dev1.vercel.app/reviews/${id}`,
+        reviewUpdate,
+        { withCredentials: true }
+      )
       .then((res) => {
         if (res.data.modifiedCount) {
           setRating(0);
@@ -67,27 +73,30 @@ const MyReviewCard = ({ review }) => {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        axios.delete(`https://b11a11-server-side-akib-dev1.vercel.app/reviews/${id}`, { withCredentials: true }).then((res) => {
-          if (res.data.deletedCount) {
+        axios
+          .delete(
+            `https://b11a11-server-side-akib-dev1.vercel.app/reviews/${id}`,
+            { withCredentials: true }
+          )
+          .then((res) => {
+            if (res.data.deletedCount) {
+              Swal.fire({
+                title: "Deleted!",
+                text: "Your review has been deleted.",
+                icon: "success",
+              });
+            }
+          })
+          .catch((error) => {
             Swal.fire({
-              title: "Deleted!",
-              text: "Your review has been deleted.",
-              icon: "success",
+              icon: "error",
+              title: "Error",
+              text: "Failed to delete review. Please try again.",
             });
-          }
-        })
-        .catch((error) => {
-          Swal.fire({
-            icon: "error",
-            title: "Error",
-            text: "Failed to delete review. Please try again.",
           });
-        });
       }
     });
   };
-
-
 
   const navigation = useNavigation();
   if (navigation.state === "loading") {
@@ -100,7 +109,7 @@ const MyReviewCard = ({ review }) => {
   return (
     <div>
       {service.serviceTitle && (
-        <div className="card bg-info card-lg shadow-sm">
+        <div className="card bg-[#FFFFFF] card-lg shadow-lg">
           <div className="card-body">
             <div className="flex items-center gap-4">
               <div className="avatar">
@@ -111,7 +120,7 @@ const MyReviewCard = ({ review }) => {
                   />
                 </div>
               </div>
-              <h2 className="card-title">{reviews.userName}</h2>
+              <h2 className="card-title text-[#242B3A]">{reviews.userName}</h2>
             </div>
             <Rating
               style={{ maxWidth: 180 }}
@@ -120,17 +129,18 @@ const MyReviewCard = ({ review }) => {
             />
             <p>{reviews.reviewText}</p>
             <div className="justify-end card-actions">
-              <p className="font-semibold">
-                Review Added Date: {reviews.reviewDate}
+              <p className="font-semibold text-[#656B76]">
+                Review Added Date:{" "}
+                <span className="font-normal">{reviews.reviewDate}</span>
               </p>
               <button
-                className="btn btn-error"
+                className="btn bg-[#EBECED] text-[#242B3A] border-0 hover:bg-[#FF008A] hover:text-white"
                 onClick={() => handleDelete(reviews._id)}
               >
                 Delete
               </button>
               <button
-                className="btn btn-warning"
+                className="btn btn-ghost bg-[#FF008A] text-white border-0 hover:bg-[#EBECED] hover:text-[#242B3A]"
                 onClick={() => {
                   document.getElementById(modalId).showModal();
                 }}
@@ -138,14 +148,14 @@ const MyReviewCard = ({ review }) => {
                 Update
               </button>
               <dialog id={modalId} className="modal">
-                <div className="modal-box text-warning bg-[#257459]">
+              <div className="modal-box text-[#242B3A] bg-[#FDFDFD]">
                   <form method="dialog">
                     <button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">
                       ✕
                     </button>
                   </form>
                   <h3 className="font-bold text-lg">Write a Review</h3>
-                  <p className="py-4 text-base">
+                  <p className="py-4 text-[#656B76]">
                     Write your review about this service here. Your feedback is
                     valuable!
                   </p>
@@ -168,7 +178,7 @@ const MyReviewCard = ({ review }) => {
                     <input
                       type="submit"
                       value="Update Review"
-                      className="btn btn-warning mt-4"
+                      className="btn bg-[#FF008A] text-white rounded-lg mt-4"
                     />
                   </form>
                 </div>
@@ -176,7 +186,7 @@ const MyReviewCard = ({ review }) => {
             </div>
             <hr className="mt-4" />
             <p className="font-semibold">
-              Service Title: {service?.serviceTitle}
+              Service Title: <span className="font-normal">{service?.serviceTitle}</span>
             </p>
           </div>
         </div>
