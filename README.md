@@ -6,6 +6,11 @@ Welcome to **ServView**, a full-featured service listing platform built with Rea
 
 ---
 
+## 📸 Screenshot
+![ServView Screenshot](https://i.ibb.co.com/WJ3g8SN/image.png)
+
+---
+
 ## 🧩 Features Overview
 
 ### 🔐 Authentication
