@@ -40,27 +40,6 @@ const Navbar = () => {
                   Services
                 </NavLink>
               </li>
-              {!user && (
-                <>
-                  <li>
-                    <Link
-                      to="/login"
-                      className="btn mb-2 bg-inherit hover:bg-[#FF008A] btn-outline text-base hover:text-white"
-                    >
-                      Log In
-                    </Link>
-                  </li>
-                  <li>
-                    <Link
-                      to="/register"
-                      className="btn bg-[#FF008A] text-base text-white"
-                    >
-                      Register
-                    </Link>
-                  </li>
-                </>
-              )}
-
               {user && (
                 <>
                   <li>
@@ -86,6 +65,31 @@ const Navbar = () => {
                     >
                       My Reviews
                     </NavLink>
+                  </li>
+                </>
+              )}
+              <li>
+                <NavLink to="/about" className="text-base font-semibold">
+                  About
+                </NavLink>
+              </li>
+              {!user && (
+                <>
+                  <li>
+                    <Link
+                      to="/login"
+                      className="btn mb-2 bg-inherit hover:bg-[#FF008A] btn-outline text-base hover:text-white"
+                    >
+                      Log In
+                    </Link>
+                  </li>
+                  <li>
+                    <Link
+                      to="/register"
+                      className="btn bg-[#FF008A] text-base text-white"
+                    >
+                      Register
+                    </Link>
                   </li>
                 </>
               )}
@@ -121,6 +125,9 @@ const Navbar = () => {
                 </li>
               </>
             )}
+            <li>
+              <NavLink to="/about">About</NavLink>
+            </li>
           </ul>
         </div>
         <div className="navbar-end">

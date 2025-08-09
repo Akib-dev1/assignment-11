@@ -15,11 +15,13 @@ import AddService from "./AddService.jsx";
 import Error from "./Error.jsx";
 import ServiceDetails from "./ServiceDetails.jsx";
 import MyServices from "./MyServices.jsx";
+import About from "./About.jsx";
 
-const limitedServices=fetch("https://b11a11-server-side-akib-dev1.vercel.app/services/limited")
-  .then((response) => response.json())
+const limitedServices = fetch(
+  "https://b11a11-server-side-akib-dev1.vercel.app/services/limited"
+).then((response) => response.json());
 
-const partners=fetch("/partners.json").then((response) => response.json())
+const partners = fetch("/partners.json").then((response) => response.json());
 
 const router = createBrowserRouter([
   {
@@ -30,7 +32,21 @@ const router = createBrowserRouter([
       {
         path: "/",
         index: true,
-        element: <Suspense fallback={<div className="flex justify-center items-center h-screen"><span className="loading loading-bars loading-xl mx-auto"></span></div>}><Home limitedServices={limitedServices} partners={partners} /></Suspense>,
+        element: (
+          <Suspense
+            fallback={
+              <div className="flex justify-center items-center h-screen">
+                <span className="loading loading-bars loading-xl mx-auto"></span>
+              </div>
+            }
+          >
+            <Home limitedServices={limitedServices} partners={partners} />
+          </Suspense>
+        ),
+      },
+      {
+        path: "about",
+        element: <About />,
       },
       {
         path: "services",
@@ -38,7 +54,11 @@ const router = createBrowserRouter([
       },
       {
         path: "myservices",
-        element: <PrivateRoute><MyServices /></PrivateRoute>,
+        element: (
+          <PrivateRoute>
+            <MyServices />
+          </PrivateRoute>
+        ),
       },
       {
         path: "login",
@@ -50,17 +70,28 @@ const router = createBrowserRouter([
       },
       {
         path: "myreviews",
-        element: <PrivateRoute><MyReviews /></PrivateRoute>
+        element: (
+          <PrivateRoute>
+            <MyReviews />
+          </PrivateRoute>
+        ),
       },
       {
         path: "servicedetails/:id",
         element: <ServiceDetails />,
-        loader: ({ params }) => fetch(`https://b11a11-server-side-akib-dev1.vercel.app/services/${params.id}`),
+        loader: ({ params }) =>
+          fetch(
+            `https://b11a11-server-side-akib-dev1.vercel.app/services/${params.id}`
+          ),
       },
       {
         path: "addservice",
-        element: <PrivateRoute><AddService /></PrivateRoute>
-      }
+        element: (
+          <PrivateRoute>
+            <AddService />
+          </PrivateRoute>
+        ),
+      },
     ],
   },
 ]);
