@@ -36,7 +36,7 @@ const MyReviews = () => {
           ))}
         </div>
       ) : (
-        <h1 className="text-3xl font-bold text-center text-[#242B3A]">
+        <h1 className="text-3xl dark:text-slate-300 font-bold text-center text-[#242B3A]">
           No Reviews Found
         </h1>
       )}
