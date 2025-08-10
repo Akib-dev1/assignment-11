@@ -126,7 +126,7 @@ const Services = () => {
           </select>
         </div>
       </div>
-      <h1 className="text-4xl font-bold text-center mb-10 text-[#28283C]">
+      <h1 className="text-4xl font-bold text-center mb-10 dark:text-white text-[#28283C]">
         All Services
       </h1>
 

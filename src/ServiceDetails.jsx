@@ -176,7 +176,7 @@ const ServiceDetails = () => {
       </div>
       {(reviews.length > 0) && (
         <>
-          <h1 className="text-3xl mt-8 font-bold text-center text-[#242B3A]">
+          <h1 className="text-3xl mt-8 dark:text-white font-bold text-center text-[#242B3A]">
             Reviews For {serviceData.serviceTitle}
           </h1>
           <div className="my-8 w-full gap-5 grid grid-cols-3 max-md:grid-cols-1">
