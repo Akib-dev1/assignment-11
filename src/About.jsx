@@ -29,13 +29,13 @@ const About = () => {
   ];
 
   return (
-    <section className="bg-white min-h-screen text-[#242B3A] py-16">
+    <section className="bg-white dark:bg-[#121721] min-h-screen text-[#242B3A] dark:text-white py-16 transition-colors duration-300">
       <div className="max-w-9/12 max-lg:max-w-10/12 max-md:w-11/12 mx-auto">
         {/* Heading */}
         <h1 className="text-4xl font-bold text-center mb-6">
           About <span className="text-[#FF008A]">ServView</span>
         </h1>
-        <p className="text-center text-[#656B76] max-w-3xl mx-auto mb-12">
+        <p className="text-center text-[#656B76] dark:text-gray-300 max-w-3xl mx-auto mb-12">
           ServView is a feature-rich service listing platform that connects
           providers and clients in one easy-to-use place. Whether you’re
           offering services or looking for them, ServView makes the process
@@ -47,12 +47,14 @@ const About = () => {
           {features.map((feature, index) => (
             <div
               key={index}
-              className="bg-white border border-gray-200 p-6 rounded-2xl shadow-sm hover:shadow-md transition-shadow"
+              className="bg-white dark:bg-[#1C2230] border border-gray-200 dark:border-gray-700 p-6 rounded-2xl shadow-sm hover:shadow-md transition-all duration-300"
             >
               <h3 className="text-xl font-semibold mb-3 text-[#FF008A]">
                 {feature.title}
               </h3>
-              <p className="text-[#656B76]">{feature.desc}</p>
+              <p className="text-[#656B76] dark:text-gray-300">
+                {feature.desc}
+              </p>
             </div>
           ))}
         </div>
