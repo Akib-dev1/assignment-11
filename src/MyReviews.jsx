@@ -26,7 +26,7 @@ const MyReviews = () => {
   return (
     <div className="w-11/12 md:w-9/12 mx-auto py-10 min-h-screen">
       <title>ServView - My Reviews</title>
-      <h1 className="text-3xl font-bold text-center mb-8 text-[#242B3A]">
+      <h1 className="text-3xl font-bold dark:text-white text-center mb-8 text-[#242B3A]">
         My Reviews
       </h1>
       {reviews.length > 0 ? (

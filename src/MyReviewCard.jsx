@@ -52,7 +52,7 @@ const MyReviewCard = ({ review }) => {
           document.getElementById(modalId).close();
         }
       })
-      .catch((error) => {
+      .catch(() => {
         document.getElementById(modalId).close();
         Swal.fire({
           icon: "error",
@@ -87,7 +87,7 @@ const MyReviewCard = ({ review }) => {
               });
             }
           })
-          .catch((error) => {
+          .catch(() => {
             Swal.fire({
               icon: "error",
               title: "Error",
@@ -127,7 +127,7 @@ const MyReviewCard = ({ review }) => {
               value={reviews.ratingStar}
               readOnly
             />
-            <p>{reviews.reviewText}</p>
+            <p className="dark:text-[#242B3A]">{reviews.reviewText}</p>
             <div className="justify-end card-actions">
               <p className="font-semibold text-[#656B76]">
                 Review Added Date:{" "}
@@ -164,7 +164,7 @@ const MyReviewCard = ({ review }) => {
                     onSubmit={(e) => handleSubmit(e, reviews._id)}
                   >
                     <textarea
-                      className="textarea text-black w-full"
+                      className="textarea dark:bg-white dark:border dark:border-black text-black w-full"
                       placeholder="Review Box"
                       name="review"
                       required
@@ -184,8 +184,8 @@ const MyReviewCard = ({ review }) => {
                 </div>
               </dialog>
             </div>
-            <hr className="mt-4" />
-            <p className="font-semibold">
+            <hr className="mt-4 dark:text-black" />
+            <p className="font-semibold dark:text-[#242B3A]">
               Service Title:{" "}
               <span className="font-normal">{service?.serviceTitle}</span>
             </p>
